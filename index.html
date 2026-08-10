@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dawah - Automated Islamic Content Publishing Platform</title>
+  <title>Dawah App</title>
+  <meta name="description" content="Dawah App - Automated Islamic Content Publishing Platform for scheduling daily book pages and spiritual reminders across social platforms.">
   <style>
     :root {
       --primary: #0f382c;
+      --primary-light: #185241;
       --accent: #d4af37;
+      --accent-hover: #f3c846;
       --bg: #0b1a15;
       --card-bg: #142821;
+      --card-border: rgba(212, 175, 55, 0.2);
       --text: #e2e8f0;
       --text-muted: #94a3b8;
+      --text-heading: #ffffff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
@@ -21,42 +27,65 @@
       line-height: 1.6;
     }
     header {
-      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(11, 26, 21, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid var(--card-border);
     }
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .logo-text {
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent);
       letter-spacing: 1px;
+      text-decoration: none;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
     nav a {
       color: var(--text);
       text-decoration: none;
-      margin-left: 24px;
       font-weight: 500;
+      font-size: 0.95rem;
       transition: color 0.2s;
     }
     nav a:hover {
       color: var(--accent);
     }
     .hero {
-      max-width: 900px;
-      margin: 80px auto 60px;
+      max-width: 1000px;
+      margin: 60px auto 40px;
       text-align: center;
       padding: 0 20px;
     }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background-color: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
     .hero h1 {
-      font-size: 3rem;
-      color: #ffffff;
+      font-size: 3.2rem;
+      color: var(--text-heading);
       margin-bottom: 20px;
       line-height: 1.2;
     }
@@ -66,26 +95,32 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 40px;
+      max-width: 780px;
+      margin: 0 auto 36px;
     }
     .cta-buttons {
       display: flex;
       justify-content: center;
       gap: 16px;
+      flex-wrap: wrap;
     }
     .btn {
-      padding: 12px 28px;
+      padding: 14px 32px;
       border-radius: 8px;
       font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.2s ease-in-out;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn-primary {
       background-color: var(--accent);
       color: #0b1a15;
     }
     .btn-primary:hover {
-      background-color: #f3c846;
+      background-color: var(--accent-hover);
       transform: translateY(-2px);
     }
     .btn-secondary {
@@ -97,39 +132,142 @@
       background-color: rgba(212, 175, 55, 0.1);
       transform: translateY(-2px);
     }
-    .features {
-      max-width: 1000px;
-      margin: 60px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+    .section-container {
+      max-width: 1100px;
+      margin: 80px auto;
       padding: 0 20px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
     }
     .feature-card {
       background-color: var(--card-bg);
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 30px;
-      text-align: left;
+      padding: 32px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
     }
     .feature-icon {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 16px;
+      display: inline-block;
     }
     .feature-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--accent);
       margin-bottom: 12px;
     }
     .feature-card p {
       color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent);
+      color: #0b1a15;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+    .step-card h3 {
+      color: var(--text-heading);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .platforms-grid {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .platform-pill {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .platform-pill span {
+      font-size: 1.3rem;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .faq-item h3 {
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      color: var(--text-muted);
       font-size: 0.95rem;
     }
     footer {
       text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 50px 20px;
+      border-top: 1px solid var(--card-border);
       margin-top: 80px;
+      background-color: rgba(11, 26, 21, 0.8);
+    }
+    footer nav {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    footer p {
       color: var(--text-muted);
       font-size: 0.9rem;
     }
@@ -137,50 +275,154 @@
       color: var(--accent);
       text-decoration: none;
     }
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+      .hero h1 { font-size: 2.2rem; }
+      nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo-container">
-      <div class="logo-text">✨ DAWAH APP</div>
+      <a href="index.html" class="logo-text">DAWAH APP</a>
     </div>
     <nav>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#faq">FAQ</a>
       <a href="terms.html">Terms of Service</a>
       <a href="privacy.html">Privacy Policy</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Automated Islamic Content &amp; <span>Book Page Publisher</span></h1>
-    <p>Dawah App seamlessly schedules and publishes daily Islamic literature, educational book pages, and daily reflections across TikTok, Facebook, Instagram, LinkedIn, Telegram, and X (Twitter).</p>
-    <div class="cta-buttons">
-      <a href="terms.html" class="btn btn-primary">Terms of Service</a>
-      <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="badge">Official Automated Publishing Platform</div>
+      <h1>Dawah App</h1>
+      <p>Automated content distribution platform designed to format, schedule, and publish daily Islamic literature, educational book pages, and spiritual reflections across TikTok, YouTube, Facebook, Instagram, LinkedIn, Telegram, and X.</p>
+      <div class="cta-buttons">
+        <a href="#features" class="btn btn-primary">Explore Platform Features</a>
+        <a href="privacy.html" class="btn btn-secondary">Privacy &amp; Data Policy</a>
+      </div>
+    </section>
 
-  <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">📖</div>
-      <h3>Daily Book Pages</h3>
-      <p>Automatically rotates and delivers high-resolution educational book pages and spiritual reflections on a set schedule.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📡</div>
-      <h3>Multi-Platform Reach</h3>
-      <p>Simultaneously shares posts across TikTok, Facebook, Instagram, LinkedIn, Telegram, and X via official API integrations.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <h3>Secure OAuth Integration</h3>
-      <p>Uses official developer API protocols and secure token management to protect user privacy and account credentials.</p>
-    </div>
-  </section>
+    <section id="features" class="section-container">
+      <div class="section-header">
+        <h2>Core Platform Features</h2>
+        <p>Comprehensive automated publishing and media scheduling capabilities built for content creators.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h3>Automated Book Page Rendering</h3>
+          <p>Processes high-resolution literature source files (such as <em>The Sublime Revelation - al-Fath ar-Rabbani</em>) into optimized visual cards and video slides ready for multi-platform distribution.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <h3>Direct Multi-Platform Publishing</h3>
+          <p>Seamless integration with official Developer APIs including TikTok Direct Post API, YouTube Data API v3, Meta Graph API, and X API for scheduled publishing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure OAuth 2.0 Security</h3>
+          <p>Adheres strictly to industry security protocols. Access tokens are encrypted, stored in secure server environments, and isolated per user session.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3>Precision Scheduling</h3>
+          <p>Configurable batch publishing engine allowing automated daily rotation, custom publication timeframes, and rate-limit compliant queue management.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Execution &amp; Progress Logging</h3>
+          <p>Real-time upload progress monitoring, automated retry algorithms for quota resets, and detailed status dashboards for published content.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>User Data Protection</h3>
+          <p>We only request explicit authorization scopes required for video/photo publishing. User data is never sold, shared, or exploited.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section-container">
+      <div class="section-header">
+        <h2>How Dawah App Works</h2>
+        <p>A simple 4-step workflow for automated content scheduling and distribution.</p>
+      </div>
+      <div class="workflow-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>OAuth Authorization</h3>
+          <p>Connect your verified creator account securely via official OAuth authorization flows.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Content Queueing</h3>
+          <p>Upload or link original educational content, high-res book pages, or daily reflection audio slides.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Automated Formatting</h3>
+          <p>Dawah App formats media to meet exact platform specifications (aspect ratios, video bitrates, captions).</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Scheduled Dispatch</h3>
+          <p>Content is automatically posted at optimal times based on your custom publishing queue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="platforms" class="section-container">
+      <div class="section-header">
+        <h2>Supported Platforms</h2>
+        <p>Integrates natively with official developer APIs across major social networks.</p>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-pill"><span>🎵</span> TikTok</div>
+        <div class="platform-pill"><span>▶️</span> YouTube</div>
+        <div class="platform-pill"><span>📘</span> Facebook</div>
+        <div class="platform-pill"><span>📸</span> Instagram</div>
+        <div class="platform-pill"><span>💼</span> LinkedIn</div>
+        <div class="platform-pill"><span>✈️</span> Telegram</div>
+        <div class="platform-pill"><span>🐦</span> X (Twitter)</div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Clear answers regarding platform compliance, data security, and service usage.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>What is Dawah App?</h3>
+          <p>Dawah App is an automated web application that assists content creators in publishing educational Islamic literature, daily book pages, and spiritual reminders across social media platforms via official developer APIs.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How is user data protected?</h3>
+          <p>Dawah App uses OAuth 2.0 to grant access tokens without accessing user account passwords. Access tokens are stored securely in environment configurations and used strictly for scheduled publishing operations.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does Dawah App comply with platform developer policies?</h3>
+          <p>Yes. All API integrations strictly comply with developer terms of service, including TikTok App Review Guidelines, YouTube API Services Terms of Service, and Meta Platform Terms.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
     <p>&copy; 2026 Dawah App. All rights reserved.</p>
-    <p style="margin-top: 8px;">Contact: <a href="mailto:hamzasaeed667@gmail.com">hamzasaeed667@gmail.com</a></p>
+    <p style="margin-top: 8px;">Contact Support: <a href="mailto:hamzasaeed667@gmail.com">hamzasaeed667@gmail.com</a></p>
   </footer>
 
 </body>
