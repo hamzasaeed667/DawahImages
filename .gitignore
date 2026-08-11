@@ -1,0 +1,17 @@
+# Environment & Secrets
+.env
+*.env
+
+# Python Virtual Environment
+venv/
+.venv/
+env/
+
+# Output directories
+videos/
+temp_audio/
+
+# OS metadata
+.DS_Store
+*.pyc
+__pycache__/
