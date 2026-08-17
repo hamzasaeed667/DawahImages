@@ -10,6 +10,7 @@ import json
 import datetime
 import requests
 from dotenv import load_dotenv, set_key
+from rank_youtube_videos import fetch_and_rank_videos
 
 ENV_FILE = ".env"
 PROGRESS_FILE = "upload_progress.json"
@@ -54,6 +55,38 @@ def load_progress():
 def save_progress(progress):
     with open(PROGRESS_FILE, "w") as f:
         json.dump(progress, f, indent=2)
+
+def get_video_metadata(index):
+    # Book categorization based on sequential numbering 1 to 1446
+    if 1 <= index <= 455:
+        book = "The Sublime Revelation (al-Fath ar-Rabbani)"
+        title = f"The Sublime Revelation - Reminders (Part {index})"
+        tags = ["Dawah", "Islam", "Spiritual", "Reminders", "Al-Fath ar-Rabbani", "Shaikh Abd al-Qadir al-Jilani"]
+    elif 456 <= index <= 624:
+        book = "Purification of the Mind (Jila' al-Khatir)"
+        title = f"Purification of the Mind - Spiritual Wisdom (Part {index})"
+        tags = ["Dawah", "Islam", "Spiritual", "Purification of Mind", "Jila al-Khatir", "Shaikh Abd al-Qadir al-Jilani"]
+    elif 625 <= index <= 743:
+        book = "Utterances of Shaikh 'Abd al-Qadir al-Jilani (Malfuzat)"
+        title = f"Utterances of Shaikh Abd al-Qadir - Daily Wisdom (Part {index})"
+        tags = ["Dawah", "Islam", "Spiritual", "Malfuzat", "Utterances", "Shaikh Abd al-Qadir al-Jilani"]
+    elif 744 <= index <= 897:
+        book = "Revelations of the Unseen (Futuh al-Ghaib)"
+        title = f"Revelations of the Unseen - Discourse (Part {index})"
+        tags = ["Dawah", "Islam", "Spiritual", "Futuh al-Ghaib", "Revelations of the Unseen", "Shaikh Abd al-Qadir al-Jilani"]
+    else:
+        book = "Necklaces of Gems (Qala'id al-Jawahir)"
+        title = f"Necklaces of Gems - Biography & Virtues (Part {index})"
+        tags = ["Dawah", "Islam", "Spiritual", "Necklaces of Gems", "Qalaid al-Jawahir", "Shaikh Abd al-Qadir al-Jilani"]
+
+    description = (
+        f"Daily spiritual reading from {book} "
+        f"by Shaikh 'Abd al-Qadir al-Jilani.\n\n"
+        f"Part {index} of 1446.\n\n"
+        f"#Islam #Spiritual #Dawah #IslamicQuotes #ShaikhAbdAlQadirAlJilani"
+    )
+
+    return title, description, tags
 
 def upload_video_file(access_token, video_path, title, description, tags, category_id="22", privacy_status="public"):
     file_size = os.path.getsize(video_path)
@@ -104,7 +137,7 @@ def upload_video_file(access_token, video_path, title, description, tags, catego
     else:
         return None, up_resp.status_code, up_resp.text
 
-def upload_and_schedule_videos(start_date=None, start_index=1, end_index=455):
+def upload_next_batch():
     print("Authenticating with YouTube API...", flush=True)
     access_token = get_access_token()
 
@@ -123,49 +156,45 @@ def upload_and_schedule_videos(start_date=None, start_index=1, end_index=455):
 
     progress = load_progress()
 
-    if start_date is None:
-        start_date = datetime.datetime.utcnow() + datetime.timedelta(days=1)
-        start_date = start_date.replace(hour=9, minute=0, second=0, microsecond=0)
+    # Find all videos on disk
+    video_files = [f for f in os.listdir("videos") if f.endswith(".mp4")]
+    video_nums = sorted([int(os.path.splitext(f)[0]) for f in video_files if os.path.splitext(f)[0].isdigit()])
+
+    pending_videos = [n for n in video_nums if str(n) not in progress and f"{n:03d}" not in progress]
 
     print(f"=======================================================", flush=True)
-    print(f"Starting Batch Upload (001 to {end_index})", flush=True)
+    print(f"Starting Next Batch YouTube Upload ({len(pending_videos)} pending videos)", flush=True)
     print(f"=======================================================\n", flush=True)
+
+    if not pending_videos:
+        print("All videos have already been uploaded to YouTube!")
+        fetch_and_rank_videos()
+        return
 
     uploaded_count = 0
 
-    for i in range(start_index, end_index + 1):
+    for i in pending_videos:
         file_id = f"{i:03d}"
         video_path = f"videos/{file_id}.mp4"
 
-        if file_id in progress:
-            print(f"[{file_id}] Already uploaded: https://youtu.be/{progress[file_id]['youtube_id']}", flush=True)
-            continue
-
         if not os.path.exists(video_path):
-            print(f"[{file_id}] Skipping (Video file not found: {video_path})", flush=True)
-            continue
+            video_path = f"videos/{i}.mp4"
+            if not os.path.exists(video_path):
+                print(f"[{file_id}] Skipping (Video file not found)", flush=True)
+                continue
 
-        publish_time = start_date + datetime.timedelta(days=(i - start_index))
-        publish_iso = publish_time.strftime("%Y-%m-%dT%H:%M:%SZ")
+        title, description, tags = get_video_metadata(i)
 
-        title = f"The Sublime Revelation - Reminders (Part {i})"
-        description = (
-            f"Daily spiritual reading from The Sublime Revelation (al-Fath ar-Rabbani) "
-            f"by Shaikh 'Abd al-Qadir al-Jilani.\n\n"
-            f"Part {i} of 455."
-        )
-        tags = ["Dawah", "Islam", "Spiritual", "Reminders", "Al-Fath ar-Rabbani"]
-
-        print(f"[{file_id}] Uploading {video_path}...", flush=True)
+        print(f"[{file_id}] Uploading: {title}...", flush=True)
 
         yt_id, status_code, err_msg = upload_video_file(
             access_token, video_path, title, description, tags
         )
 
         if yt_id:
-            progress[file_id] = {
+            progress[str(i)] = {
                 "youtube_id": yt_id,
-                "scheduled_date": publish_iso,
+                "title": title,
                 "uploaded_at": datetime.datetime.utcnow().isoformat()
             }
             save_progress(progress)
@@ -189,22 +218,26 @@ def upload_and_schedule_videos(start_date=None, start_index=1, end_index=455):
                         access_token, video_path, title, description, tags
                     )
                     if yt_id:
-                        progress[file_id] = {
+                        progress[str(i)] = {
                             "youtube_id": yt_id,
-                            "scheduled_date": publish_iso,
+                            "title": title,
                             "uploaded_at": datetime.datetime.utcnow().isoformat()
                         }
                         save_progress(progress)
                         uploaded_count += 1
                         print(f"  ✓ Uploaded after token refresh! URL: https://youtu.be/{yt_id}", flush=True)
                         continue
-                print(f"Stopping batch due to upload error on {file_id}.", flush=True)
+                print(f"Stopping batch due to error on video {file_id}.", flush=True)
                 break
 
     print(f"\n=======================================================", flush=True)
     print(f"Batch Upload Session Complete: {uploaded_count} new videos uploaded.", flush=True)
-    print(f"Total uploaded so far: {len(progress)} / 455", flush=True)
-    print(f"=======================================================", flush=True)
+    print(f"Total uploaded to YouTube: {len(progress)} / {len(video_nums)}", flush=True)
+    print(f"=======================================================\n", flush=True)
+
+    # Rank all videos after upload
+    print("Updating video rankings...", flush=True)
+    fetch_and_rank_videos()
 
 if __name__ == "__main__":
-    upload_and_schedule_videos()
+    upload_next_batch()
