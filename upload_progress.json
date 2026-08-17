@@ -438,5 +438,300 @@
     "youtube_id": "pPI8fiq4O9Q",
     "scheduled_date": "2026-11-06T09:00:00Z",
     "uploaded_at": "2026-08-10T13:32:54.487144"
+  },
+  "089": {
+    "youtube_id": "IxMOsYiV9EA",
+    "scheduled_date": "2026-11-09T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:04.766559"
+  },
+  "090": {
+    "youtube_id": "OFOkcLBl_0E",
+    "scheduled_date": "2026-11-10T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:14.095298"
+  },
+  "091": {
+    "youtube_id": "XiyG6eakNdA",
+    "scheduled_date": "2026-11-11T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:21.635563"
+  },
+  "092": {
+    "youtube_id": "mP3L8BUDdKE",
+    "scheduled_date": "2026-11-12T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:28.929021"
+  },
+  "093": {
+    "youtube_id": "40s4TPdYnes",
+    "scheduled_date": "2026-11-13T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:36.633464"
+  },
+  "094": {
+    "youtube_id": "xHJirey0c-A",
+    "scheduled_date": "2026-11-14T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:49.797485"
+  },
+  "095": {
+    "youtube_id": "twX0K14sAFs",
+    "scheduled_date": "2026-11-15T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:10:59.364622"
+  },
+  "096": {
+    "youtube_id": "zDWmRnknw9E",
+    "scheduled_date": "2026-11-16T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:11:09.778158"
+  },
+  "097": {
+    "youtube_id": "HAj5YH5bk5k",
+    "scheduled_date": "2026-11-17T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:11:17.661655"
+  },
+  "098": {
+    "youtube_id": "PUiyoqrpjVY",
+    "scheduled_date": "2026-11-18T09:00:00Z",
+    "uploaded_at": "2026-08-12T05:11:20.739267"
+  },
+  "099": {
+    "youtube_id": "S-XH48OAfko",
+    "scheduled_date": "2026-11-21T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:21:57.520664"
+  },
+  "100": {
+    "youtube_id": "QqwatJgZGis",
+    "scheduled_date": "2026-11-22T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:22:03.569359"
+  },
+  "101": {
+    "youtube_id": "LSeW9KKASjg",
+    "scheduled_date": "2026-11-23T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:11.107902"
+  },
+  "102": {
+    "youtube_id": "L4b3av_e5F8",
+    "scheduled_date": "2026-11-24T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:15.510933"
+  },
+  "103": {
+    "youtube_id": "QUYy5c_N-Mo",
+    "scheduled_date": "2026-11-25T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:21.961703"
+  },
+  "104": {
+    "youtube_id": "mKdRQWtWKPA",
+    "scheduled_date": "2026-11-26T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:29.959729"
+  },
+  "105": {
+    "youtube_id": "ZYmWfrQqo2E",
+    "scheduled_date": "2026-11-27T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:40.752908"
+  },
+  "106": {
+    "youtube_id": "8QX_xWG1pn8",
+    "scheduled_date": "2026-11-28T09:00:00Z",
+    "uploaded_at": "2026-08-14T19:24:48.456712"
+  },
+  "107": {
+    "youtube_id": "3hZxDAWReDA",
+    "scheduled_date": "2026-12-01T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:25:28.389486"
+  },
+  "108": {
+    "youtube_id": "g4XofU_vOVc",
+    "scheduled_date": "2026-12-02T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:25:37.170680"
+  },
+  "109": {
+    "youtube_id": "qxCfCbaz0Ys",
+    "scheduled_date": "2026-12-03T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:25:42.934343"
+  },
+  "110": {
+    "youtube_id": "LmxkU68AO6s",
+    "scheduled_date": "2026-12-04T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:25:50.711217"
+  },
+  "111": {
+    "youtube_id": "A6ojEkfFuMU",
+    "scheduled_date": "2026-12-05T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:25:57.949647"
+  },
+  "112": {
+    "youtube_id": "dkv3mv2YiB4",
+    "scheduled_date": "2026-12-06T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:06.530612"
+  },
+  "113": {
+    "youtube_id": "ob70kwfkAlE",
+    "scheduled_date": "2026-12-07T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:15.021174"
+  },
+  "114": {
+    "youtube_id": "Cu80SWlc7m0",
+    "scheduled_date": "2026-12-08T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:21.787158"
+  },
+  "115": {
+    "youtube_id": "iPNE6U_uJkQ",
+    "scheduled_date": "2026-12-09T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:29.356927"
+  },
+  "116": {
+    "youtube_id": "Kvm1fWrE5iY",
+    "scheduled_date": "2026-12-10T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:37.145573"
+  },
+  "117": {
+    "youtube_id": "mlqi5zMj4v4",
+    "scheduled_date": "2026-12-11T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:44.594896"
+  },
+  "118": {
+    "youtube_id": "bJtVayBXPug",
+    "scheduled_date": "2026-12-12T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:26:54.489204"
+  },
+  "119": {
+    "youtube_id": "abHReRV6bAw",
+    "scheduled_date": "2026-12-13T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:27:20.485113"
+  },
+  "120": {
+    "youtube_id": "kNgQXf9RdNg",
+    "scheduled_date": "2026-12-14T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:27:34.734153"
+  },
+  "121": {
+    "youtube_id": "Eex-qKWqUEE",
+    "scheduled_date": "2026-12-15T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:27:41.932226"
+  },
+  "122": {
+    "youtube_id": "l8IyMpnqVWw",
+    "scheduled_date": "2026-12-16T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:27:51.681706"
+  },
+  "123": {
+    "youtube_id": "dcFkeW3Ulkk",
+    "scheduled_date": "2026-12-17T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:28:01.136758"
+  },
+  "124": {
+    "youtube_id": "tSVRmyPtlLU",
+    "scheduled_date": "2026-12-18T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:28:12.498330"
+  },
+  "125": {
+    "youtube_id": "LDwFCsZunbk",
+    "scheduled_date": "2026-12-19T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:28:29.044596"
+  },
+  "126": {
+    "youtube_id": "0aIkLqRqsQM",
+    "scheduled_date": "2026-12-20T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:28:43.392629"
+  },
+  "127": {
+    "youtube_id": "TylBzoWrmQU",
+    "scheduled_date": "2026-12-21T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:28:57.556379"
+  },
+  "128": {
+    "youtube_id": "XWCczc2WMRI",
+    "scheduled_date": "2026-12-22T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:10.108554"
+  },
+  "129": {
+    "youtube_id": "ha8akyB7I5c",
+    "scheduled_date": "2026-12-23T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:21.455699"
+  },
+  "130": {
+    "youtube_id": "aPvB1L8Ck4I",
+    "scheduled_date": "2026-12-24T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:28.120064"
+  },
+  "131": {
+    "youtube_id": "-MhSayDJbXI",
+    "scheduled_date": "2026-12-25T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:38.591900"
+  },
+  "132": {
+    "youtube_id": "RRqVSfcVYRQ",
+    "scheduled_date": "2026-12-26T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:50.645407"
+  },
+  "133": {
+    "youtube_id": "Yrk-YA_FePM",
+    "scheduled_date": "2026-12-27T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:29:57.129219"
+  },
+  "134": {
+    "youtube_id": "hxGhApek7pE",
+    "scheduled_date": "2026-12-28T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:30:06.358296"
+  },
+  "135": {
+    "youtube_id": "OJ4DAUlhJGs",
+    "scheduled_date": "2026-12-29T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:30:24.131617"
+  },
+  "136": {
+    "youtube_id": "raoELxpbcF0",
+    "scheduled_date": "2026-12-30T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:30:36.200759"
+  },
+  "137": {
+    "youtube_id": "cYiJK6qtVcY",
+    "scheduled_date": "2026-12-31T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:30:46.784147"
+  },
+  "138": {
+    "youtube_id": "r04qC72Llfc",
+    "scheduled_date": "2027-01-01T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:30:53.619067"
+  },
+  "139": {
+    "youtube_id": "fmkrx-4lZCg",
+    "scheduled_date": "2027-01-02T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:03.700020"
+  },
+  "140": {
+    "youtube_id": "G79gD7iNuGc",
+    "scheduled_date": "2027-01-03T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:14.264932"
+  },
+  "141": {
+    "youtube_id": "4C8eFhcW1IU",
+    "scheduled_date": "2027-01-04T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:21.559643"
+  },
+  "142": {
+    "youtube_id": "FbnNfJR9U0o",
+    "scheduled_date": "2027-01-05T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:31.030160"
+  },
+  "143": {
+    "youtube_id": "cLwIuvsRiAA",
+    "scheduled_date": "2027-01-06T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:37.867038"
+  },
+  "144": {
+    "youtube_id": "N1FU8ep2mHM",
+    "scheduled_date": "2027-01-07T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:45.851743"
+  },
+  "145": {
+    "youtube_id": "sHPPUforBLI",
+    "scheduled_date": "2027-01-08T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:31:58.946806"
+  },
+  "146": {
+    "youtube_id": "H8EMFrH98tk",
+    "scheduled_date": "2027-01-09T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:32:10.826980"
+  },
+  "147": {
+    "youtube_id": "dRq3LcmvSVk",
+    "scheduled_date": "2027-01-10T09:00:00Z",
+    "uploaded_at": "2026-08-16T07:32:21.778950"
   }
 }
